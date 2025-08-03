@@ -1,0 +1,30 @@
+git clone --recursive https://github.com/FunAudioLLM/CosyVoice.git
+conda create -n cosyvoice -y python=3.10
+conda activate cosyvoice
+
+
+cd CosyVoice
+conda install -y -c conda-forge pynini==2.1.5
+
+pip install -r requirements.txt
+
+下载的模型不能用hugface上的模型,那个复核音色会出问题,生成的语音杂乱
+
+需要下载下边这个国内的模型
+
+https://www.modelscope.cn/models/iic/CosyVoice2-0.5B/summary
+
+使用下边方法下载到CosyVoice目录下
+
+mkdir -p pretrained_models
+git clone https://www.modelscope.cn/iic/CosyVoice2-0.5B.git pretrained_models/CosyVoice2-0.5B
+
+如果要使用预训练模型,需要从下边网站下载
+https://github.com/user-attachments/files/18149385/spk2info.zip
+
+
+然后使用python webui.py  运行项目
+
+如果使用预训练模型出错,可以在命令行下使用下边命令
+export CUDA_LAUNCH_BLOCKING=1
+
